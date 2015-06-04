@@ -1,6 +1,7 @@
-## Welcome to My Repo
+## Assignment 15 - Todo lists
 
-> I am your Readme.md file, you should probably update me.
+> Due Monday, June 8 by 8am
+> Create simple to do list
 
 
 ## Usage
@@ -13,3 +14,9 @@ This template contains some simple `gulp` tasks. They are as follows:
 - `gulp handlebars`: This will compile your handlebars (`.hbs`) files for you. Again, `watch` will watch for changes, but if you add new files, you'll need to run this or restart the `gulp watch` command.
 
 There are many more tasks, and you really should read through the `gulpfile.js`, but the ones above will take care of you in most cases.
+
+
+This file contains bourbon and neat. If you plan to make changes to this, you will need to run the following:
+
+- bourbon install
+- neat install
