@@ -74,6 +74,7 @@ form {
     @include span-columns(2);
     background-color: white;
     font-size: 4em;
+    transition: .3s all ease;
 
     &:hover {
     color: $lightblue;
@@ -96,6 +97,8 @@ ul {
     padding: 10px;
     width: 100%;
     margin-bottom: 10px;
+    display: inline-block;
+    float: left;
 
     .circle {
       height: 30px;
@@ -105,6 +108,8 @@ ul {
       background-color: $red;
       float: left;
       position: relative;
+      transition: .2s all ease;
+
     }
 
     .circle:hover {
@@ -117,8 +122,40 @@ ul {
       padding-left: 20px;
     }
 
+    .timestamp {
+      float: right;
+      font-size: .5em;
+      color: $lightblue;
+    }
+
   }
 }
+
+// .delete {
+//   display: inline-block;
+//   height: 30px;
+//   width: 30px;
+//   top: 0;
+//   left: 0;
+//   float: right;
+
+//   &::before {
+//     font-family: FontAwesome;
+//     content: "\f00d";
+//     color: $red;
+//     opacity: .2;
+//     font-size: 1em;
+//     left: 0;
+//     top: 0;
+//     height: 30px;
+
+//     &:hover {
+//       opacity: 1;
+//     }
+
+//   }
+
+// }
 
 .bottom {
   width: 100%;
@@ -126,8 +163,24 @@ ul {
   padding-top: 10px;
   clear: both;
 
+  .counter {
+    display: inline-block;
+    float: left;
+  }
+
   button {
     float: right;
+    background-color: $darkblue;
+    @include border($darkblue);
+    color: white;
+    padding: 10px;
+    font-size: 1.5em;
+    transition: .3s all ease;
+
+    &:hover {
+      background-color: $red;
+      @include border($red);
+    }
   }
 }
 

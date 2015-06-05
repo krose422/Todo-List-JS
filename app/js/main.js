@@ -31,6 +31,7 @@ function addTask () {
     var taskInstance = new Todo({ task: task });
     taskList.push(taskInstance);
     $('#tasks').append(template.addtask(taskInstance));
+    $('.count').html(taskList.length);
   }
 
 }
@@ -53,6 +54,17 @@ $('#tasks').on('click', 'li', function (event) {
   var date = moment().format('MMM DD, YYYY');
   var time = moment().format('hh:mm');
   $(this).find('.timestamp').html('completed on ' + date + ' at ' + time);
+
+  var taskCount = 0;
+
+  _.each(taskList, function (taskitem) {
+    if (taskitem.status === 'Open') {
+      taskCount++;
+    }
+
+    $('.count').html(taskCount);
+
+  });
 
 });
 
@@ -80,6 +92,8 @@ $('#clear').on('click', function (event) {
     return y.status === 'Done';
   });
 
+  $('.count').html(taskList.length);
+
   $('#tasks').empty();
 
   _.each(taskList, function (data) {
@@ -87,6 +101,7 @@ $('#clear').on('click', function (event) {
   });
 
 });
+
 
 
 // });
