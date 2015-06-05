@@ -69,6 +69,7 @@ form {
     padding: 10px;
     padding-top: 10px;
     font-size: 3em;
+    color: $red;
   }
   button {
     @include span-columns(2);
@@ -108,7 +109,7 @@ ul {
       background-color: $red;
       float: left;
       position: relative;
-      transition: .2s all ease;
+      transition: .1s all ease;
 
     }
 
@@ -162,11 +163,34 @@ ul {
   margin: auto;
   padding-top: 10px;
   clear: both;
+  overflow: hidden;
 
-  .counter {
+  div {
     display: inline-block;
     float: left;
   }
+
+  .counter {
+    font-size: .8em;
+    margin: 15px;
+    float: left;
+  }
+
+  .sorting {
+    margin-left: 40px;
+
+  .sortBtn {
+    @include border($grey);
+    border-radius: 4px;
+    padding: 5px;
+    margin: 10px;
+
+    &:hover {
+      cursor: pointer;
+      @include border($lightblue);
+    }
+  }
+}
 
   button {
     float: right;
@@ -175,6 +199,7 @@ ul {
     color: white;
     padding: 10px;
     font-size: 1.5em;
+    border-radius: 4px;
     transition: .3s all ease;
 
     &:hover {

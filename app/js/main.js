@@ -30,9 +30,13 @@ function addTask () {
   if (task !== '') {
     var taskInstance = new Todo({ task: task });
     taskList.push(taskInstance);
-    $('#tasks').append(template.addtask(taskInstance));
-    $('.count').html(taskList.length);
+    $('#tasks').prepend(template.addtask(taskInstance));
+    count();
+
+    // KELLEY TO FIX BUG - ONLY WANT NUMBER OF OPEN ITEMS
   }
+
+  console.log(taskList);
 
 }
 
@@ -41,13 +45,13 @@ function addTask () {
 // =======================================================
 
 $('#tasks').on('click', 'li', function (event) {
-
   event.preventDefault();
 
   $(this).addClass('complete');
 
   var tTask = $(this).find('span').text();
   var taskToEdit = _.find(taskList, { task: tTask });
+  console.log(taskToEdit);
 
   taskToEdit.status = 'Done';
 
@@ -55,16 +59,7 @@ $('#tasks').on('click', 'li', function (event) {
   var time = moment().format('hh:mm');
   $(this).find('.timestamp').html('completed on ' + date + ' at ' + time);
 
-  var taskCount = 0;
-
-  _.each(taskList, function (taskitem) {
-    if (taskitem.status === 'Open') {
-      taskCount++;
-    }
-
-    $('.count').html(taskCount);
-
-  });
+  count();
 
 });
 
@@ -78,7 +73,7 @@ $('#tasks').on('click', '.complete', function (event) {
   var taskToEdit = _.find(taskList, { task: tTask });
 
   taskToEdit.status = 'Open';
-
+  count();
 });
 
 
@@ -93,16 +88,77 @@ $('#clear').on('click', function (event) {
   });
 
   $('.count').html(taskList.length);
-
   $('#tasks').empty();
 
   _.each(taskList, function (data) {
+    $('#tasks').append(template.addtask(data));
+  });
+});
+
+var incompleteList = [];
+
+$('.sorting').on('click', '#incomplete', function (event) {
+  event.preventDefault();
+
+  incompleteList = _.filter(taskList, function (t) {
+    return t.status === 'Open';
+  });
+
+  console.log(incompleteList);
+
+    $('#tasks').empty();
+  _.each(incompleteList, function (data) {
     $('#tasks').append(template.addtask(data));
   });
 
 });
 
 
+var completeList = [];
+
+$('.sorting').on('click', '#completed', function (event) {
+  event.preventDefault();
+
+  completeList = _.filter(taskList, function (t) {
+    return t.status === 'Done';
+  });
+
+    $('#tasks').empty();
+  _.each(completeList, function (data) {
+    $('#tasks').append(template.addtask(data));
+  });
+    $('li').addClass('complete');
+
+});
+
+
+var allList = [];
+
+$('.sorting').on('click', '#all', function (event) {
+  event.preventDefault();
+
+  $('#tasks').empty();
+  _.each(taskList, function (data) {
+    if (data.status === 'Done') {
+      $('li').addClass('complete');
+    }
+    $('#tasks').append(template.addtask(data));
+  });
+
+});
+
+
+
+// count number of open items for counter
+function count () {
+  var taskCount = 0;
+  _.each(taskList, function (taskitem) {
+    if (taskitem.status === 'Open') {
+      taskCount++;
+    }
+    $('.count').html(taskCount);
+  });
+}
 
 // });
 
