@@ -18,20 +18,23 @@ var Todo = function (options) {
 
 var taskList = [];
 
-function addTasks () {
-  var task = $('#task').val();
-  var taskInstance = new Todo({ task: task });
-
-  taskList.push(taskInstance);
-  $('#tasks').append('<li>' + task + '</li>');
-}
-
 $('#addTask').on('submit', function (event) {
   event.preventDefault();
-  addTasks();
+  addTask();
   this.reset();
 });
 
+function addTask () {
+  var task = $('#task').val();
+  var taskInstance = new Todo({ task: task });
+
+  // KELLEY FIX BUG TO NOT ADD A BLANK INPUT TO LIST
+
+  taskList.push(taskInstance);
+  $('#tasks').append(template.timestamp(taskInstance));
+
+  // $('#tasks').append('<li>' + task + '</li>');
+}
 
 
 // Toggle checkmark when item clicked, and toggle status
@@ -42,8 +45,6 @@ $('#tasks').on('click', 'li', function (event) {
   event.preventDefault();
 
   $(this).toggleClass('complete');
-  var now = moment(new Date());
-  $(this).append('<span>completed at ' + now);
 
 // FIX BUG - CHANGES TWICE, BUT THEN STAYS 'OPEN'
   var tTask = $(this).text();
@@ -51,10 +52,10 @@ $('#tasks').on('click', 'li', function (event) {
 
   if (taskToEdit.status === 'Open') {
     taskToEdit.status = 'Done';
-    // console.log(taskToEdit);
+    console.log(taskToEdit);
   } else if (taskToEdit.status === 'Done') {
     taskToEdit = 'Open';
-    // console.log(taskToEdit);
+    console.log(taskToEdit);
   }
 
 });

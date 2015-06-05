@@ -5,20 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/vendor/normalize.css">
   <link rel="stylesheet" href="css/main.css">
+
+  <link rel="stylesheet" href="css/vendor/font-awesome.css">
+  <link href="http://fonts.googleapis.com/css?family=Playfair+Display|Open+Sans|Open+Sans+Condensed:300" rel="stylesheet" type="text/css">
 </head>
 <body>
 
   <div class="container">
 
+  <h1>todo list</h1>
     <form id="addTask">
-      <input id="task" placeholder="Add todo">
-      <button>Add</button>
+      <input id="task" placeholder="Enter new item..." onfocus="this.placeholder=''">
+      <button>
+        <i class="fa fa-plus-square"></i>
+      </button>
     </form>
+
     <ul id="tasks">
 
     </ul>
 
-    <button id="clear">Clear Completed</button>
+    <div class="bottom">
+      <button id="clear">Clear Completed</button>
+    </div>
 
   </div>
 
@@ -26,6 +35,8 @@
   <script src="js/vendor/jquery.js"></script>
   <script src="js/vendor/underscore.js"></script>
   <script src="js/vendor/handlebars.js"></script>
+  <script src="js/vendor/moment.js"></script>
+
   <!-- TEMPLATES -->
   <script src="js/templates.js"></script>
   <!-- MAIN -->

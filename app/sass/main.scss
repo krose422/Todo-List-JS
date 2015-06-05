@@ -1,5 +1,126 @@
+@import "../css/vendor/bourbon/bourbon";
+@import "../css/vendor/neat/neat";
+
+
+$playfair: "Playfair Display", serif;
+$opensans: "Open Sans", sans-serif;
+$opensanscon: "Open Sans Condensed", sans-serif;
+
+$grey: #DAEAEF;
+$red: #FF3D2E;
+$lightgrey : #FFFFFF;
+$lightblue: #9DBDC6;
+$darkblue: #323C42;
+
+
+@mixin border() {
+  border: 1px solid $grey;
+}
+
+
+/* GLOBAL STYLES
+---------------- */
+
+* {
+  box-sizing: border-box;
+}
+
 body {
-  background-color: #cccff0;
+  font-size: 62.5%;
+  width: 100%;
+  font-family: $opensans;
+}
+
+input, button {
+  border: none;
+
+  &:focus {
+    outline: none;
+  }
+
+}
+
+/* CONTENT STYLES
+----------------- */
+
+.container {
+  width: 70%;
+  margin: auto;
+  @include outer-container;
+  color: $darkblue;
+
+}
+
+h1 {
+  font-family: $playfair;
+  font-size: 6em;
+  text-align: center;
+}
+
+form {
+  overflow: hidden;
+  text-align: center;
+  @include border;
+
+
+  input {
+    @include span-columns(10);
+    padding: 10px;
+    padding-top: 10px;
+    font-size: 3em;
+  }
+  button {
+    @include span-columns(2);
+    background-color: white;
+    font-size: 4em;
+
+    &:hover {
+    color: $lightblue;
+
+  }
+
+
+  }
+}
+
+ul {
+  clear: both;
+  list-style: none;
+  padding: 0;
+
+  li {
+    overflow: hidden;
+    font-size: 2.2em;
+    @include border;
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 10px;
+
+    .circle {
+      height: 30px;
+      width: 30px;
+      border-radius: 50%;
+      @include border;
+      float: left;
+    }
+
+    span {
+      float: left;
+      padding-left: 20px;
+    }
+
+  }
+}
+
+.bottom {
+  width: 100%;
+  margin: auto;
+  padding-top: 10px;
+  clear: both;
+
+  button {
+    float: right;
+  }
 }
 
 .complete {
