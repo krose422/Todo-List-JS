@@ -77,33 +77,18 @@ $('#tasks').on('click', '.complete', function (event) {
 $('#clear').on('click', function (event) {
   event.preventDefault();
 
-  taskList = taskList.filter ( function (y) {
-    if (y.status ===  'Open') {
-      return y;
-    }
-    // taskList.push(y);
-    console.log(taskList);
+  taskList = _.reject(taskList, function (y) {
 
-    if (y.status === 'Done') {
-      var yTask = y.task;
-      // console.log(y.task);
+    return y.status === 'Done';
 
-      console.log($('.complete span').text());
+  });
 
-      var completedText = $('.complete span').text();
+  console.log(taskList);
 
-      if (y.task === completedText) {
-        $('li .complete').remove();
-      }
-
-    }
-
-  }); // ends filter function
-
-  // console.log(taskList);
+  $('#tasks').empty();
+  $('#tasks').append('<li>' + task + '</li>');
 
 }); // ends clear on click function
-
 
 
 // });
