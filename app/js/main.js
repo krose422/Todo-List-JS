@@ -86,7 +86,11 @@ $('#clear').on('click', function (event) {
   console.log(taskList);
 
   $('#tasks').empty();
-  $('#tasks').append('<li>' + task + '</li>');
+
+  _.each(taskList, function (data) {
+    $('#tasks').append(template.addtask(data));
+  });
+
 
 }); // ends clear on click function
 
