@@ -43,30 +43,30 @@ $('#tasks').on('click', 'li', function (event) {
 
   event.preventDefault();
 
-  $(this).toggleClass('complete'); // passes
+  $(this).addClass('complete');
 
-  var tTask = $(this).text(); // passes
-  var taskToEdit = _.find(taskList, { task: tTask }); // fails
+  var tTask = $(this).find('span').text();
+  var taskToEdit = _.find(taskList, { task: tTask });
 
-  console.log(taskList); // passes
-  console.log(tTask); // passes
-  console.log(taskToEdit); // fails
-
-
-  if (taskToEdit.status === 'Open') {
-    taskToEdit.status = 'Done';
-  }
-
-  if (taskToEdit.status === 'Done') {
-    taskToEdit = 'Open';
-  }
-
+  taskToEdit.status = 'Done';
   console.log(taskList);
 
   // var date = moment().format('MMM DD, YYYY');
   // KELLEY FIX BUG TO NOT ADD A BLANK INPUT TO LIST
   // KELLEY - FIX BUG TO ONLY ADD TIMESTAMP TO ITEMS DONE
     // $('this .timestamp').html(date);
+});
+
+$('#tasks').on('click', '.complete', function (event) {
+  event.preventDefault();
+
+  $(this).removeClass('complete');
+
+  var tTask = $(this).find('span').text();
+  var taskToEdit = _.find(taskList, { task: tTask });
+
+  taskToEdit.status = 'Open';
+  // console.log(taskList);
 
 });
 
@@ -77,22 +77,35 @@ $('#tasks').on('click', 'li', function (event) {
 $('#clear').on('click', function (event) {
   event.preventDefault();
 
-  _.each(taskList, function (t) {
-    if (t.status === 'Done') {
-      taskList.splice(taskList.indexOf(t), 1);
-      // $(this).remove(); // KELLEY FIX BUG TO REMOVE FROM HTML
-      console.log(taskList);
+  taskList = taskList.filter ( function (y) {
+    if (y.status ===  'Open') {
+      return y;
+    }
+    // taskList.push(y);
+    console.log(taskList);
+
+    if (y.status === 'Done') {
+      var yTask = y.task;
+      // console.log(y.task);
+
+      console.log($('.complete span').text());
+
+      var completedText = $('.complete span').text();
+
+      if (y.task === completedText) {
+        $('li .complete').remove();
+      }
+
     }
 
-// KELLEY SEE WHY FILTER BELOW DOESN'T WORK
-  // _.filter(taskList, function(t) {
-  //   console.log(t.status !== 'Done');
-  //   return t.status !== 'Done';
-  // });
+  }); // ends filter function
+
   // console.log(taskList);
 
-  });
+}); // ends clear on click function
 
-});
+
+
+// });
 
 // }());
