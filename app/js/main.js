@@ -28,12 +28,11 @@ function addTask () {
   var task = $('#task').val();
   var taskInstance = new Todo({ task: task });
 
+  taskList.push(taskInstance);
+  $('#tasks').append(template.addtask(taskInstance));
+
   // KELLEY FIX BUG TO NOT ADD A BLANK INPUT TO LIST
 
-  taskList.push(taskInstance);
-  $('#tasks').append(template.timestamp(taskInstance));
-
-  // $('#tasks').append('<li>' + task + '</li>');
 }
 
 
@@ -44,19 +43,30 @@ $('#tasks').on('click', 'li', function (event) {
 
   event.preventDefault();
 
-  $(this).toggleClass('complete');
+  $(this).toggleClass('complete'); // passes
 
-// FIX BUG - CHANGES TWICE, BUT THEN STAYS 'OPEN'
-  var tTask = $(this).text();
-  var taskToEdit = _.find(taskList, { task: tTask });
+  var tTask = $(this).text(); // passes
+  var taskToEdit = _.find(taskList, { task: tTask }); // fails
+
+  console.log(taskList); // passes
+  console.log(tTask); // passes
+  console.log(taskToEdit); // fails
+
 
   if (taskToEdit.status === 'Open') {
     taskToEdit.status = 'Done';
-    console.log(taskToEdit);
-  } else if (taskToEdit.status === 'Done') {
-    taskToEdit = 'Open';
-    console.log(taskToEdit);
   }
+
+  if (taskToEdit.status === 'Done') {
+    taskToEdit = 'Open';
+  }
+
+  console.log(taskList);
+
+  // var date = moment().format('MMM DD, YYYY');
+  // KELLEY FIX BUG TO NOT ADD A BLANK INPUT TO LIST
+  // KELLEY - FIX BUG TO ONLY ADD TIMESTAMP TO ITEMS DONE
+    // $('this .timestamp').html(date);
 
 });
 

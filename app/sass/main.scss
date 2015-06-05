@@ -7,14 +7,14 @@ $opensans: "Open Sans", sans-serif;
 $opensanscon: "Open Sans Condensed", sans-serif;
 
 $grey: #DAEAEF;
-$red: #FF3D2E;
+$red: #D0553E;
 $lightgrey : #FFFFFF;
 $lightblue: #9DBDC6;
 $darkblue: #323C42;
 
 
-@mixin border() {
-  border: 1px solid $grey;
+@mixin border($color) {
+  border: 1px solid $color;
 }
 
 
@@ -51,6 +51,7 @@ input, button {
 
 }
 
+
 h1 {
   font-family: $playfair;
   font-size: 6em;
@@ -60,7 +61,7 @@ h1 {
 form {
   overflow: hidden;
   text-align: center;
-  @include border;
+  @include border($grey);
 
 
   input {
@@ -90,8 +91,8 @@ ul {
 
   li {
     overflow: hidden;
-    font-size: 2.2em;
-    @include border;
+    font-size: 2.3em;
+    @include border($grey);
     padding: 10px;
     width: 100%;
     margin-bottom: 10px;
@@ -100,8 +101,15 @@ ul {
       height: 30px;
       width: 30px;
       border-radius: 50%;
-      @include border;
+      @include border($red);
+      background-color: $red;
       float: left;
+      position: relative;
+    }
+
+    .circle:hover {
+      background-color: $lightblue;
+      @include border($lightblue);
     }
 
     span {
@@ -124,5 +132,25 @@ ul {
 }
 
 .complete {
-  text-decoration: line-through;
+
+  .circle {
+    @include border($grey);
+    background-color: white;
+  }
+
+  .circle:hover {
+    background-color: white;
+    @include border($lightblue);
+  }
+
+  .circle::before {
+    position: absolute;
+    font-family: FontAwesome;
+    content: "\f00c";
+    color: $lightblue;
+    font-size: 1.6em;
+    bottom: 13px;
+    left: -1px;
+    height: 80%;
+  }
 }

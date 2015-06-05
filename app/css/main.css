@@ -72,7 +72,7 @@ ul {
   padding: 0; }
   ul li {
     overflow: hidden;
-    font-size: 2.2em;
+    font-size: 2.3em;
     border: 1px solid #DAEAEF;
     padding: 10px;
     width: 100%;
@@ -81,8 +81,13 @@ ul {
       height: 30px;
       width: 30px;
       border-radius: 50%;
-      border: 1px solid #DAEAEF;
-      float: left; }
+      border: 1px solid #D0553E;
+      background-color: #D0553E;
+      float: left;
+      position: relative; }
+    ul li .circle:hover {
+      background-color: #9DBDC6;
+      border: 1px solid #9DBDC6; }
     ul li span {
       float: left;
       padding-left: 20px; }
@@ -95,5 +100,20 @@ ul {
   .bottom button {
     float: right; }
 
-.complete {
-  text-decoration: line-through; }
+.complete .circle {
+  border: 1px solid #DAEAEF;
+  background-color: white; }
+
+.complete .circle:hover {
+  background-color: white;
+  border: 1px solid #9DBDC6; }
+
+.complete .circle::before {
+  position: absolute;
+  font-family: FontAwesome;
+  content: "\f00c";
+  color: #9DBDC6;
+  font-size: 1.6em;
+  bottom: 13px;
+  left: -1px;
+  height: 80%; }
