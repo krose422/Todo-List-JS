@@ -26,12 +26,12 @@ $('#addTask').on('submit', function (event) {
 
 function addTask () {
   var task = $('#task').val();
-  var taskInstance = new Todo({ task: task });
 
-  taskList.push(taskInstance);
-  $('#tasks').append(template.addtask(taskInstance));
-
-  // KELLEY FIX BUG TO NOT ADD A BLANK INPUT TO LIST
+  if (task !== '') {
+    var taskInstance = new Todo({ task: task });
+    taskList.push(taskInstance);
+    $('#tasks').append(template.addtask(taskInstance));
+  }
 
 }
 
@@ -66,7 +66,6 @@ $('#tasks').on('click', '.complete', function (event) {
   var taskToEdit = _.find(taskList, { task: tTask });
 
   taskToEdit.status = 'Open';
-  // console.log(taskList);
 
 });
 
@@ -78,19 +77,14 @@ $('#clear').on('click', function (event) {
   event.preventDefault();
 
   taskList = _.reject(taskList, function (y) {
-
     return y.status === 'Done';
-
   });
-
-  console.log(taskList);
 
   $('#tasks').empty();
 
   _.each(taskList, function (data) {
     $('#tasks').append(template.addtask(data));
   });
-
 
 }); // ends clear on click function
 
