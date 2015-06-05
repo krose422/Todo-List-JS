@@ -49,18 +49,18 @@ $('#tasks').on('click', 'li', function (event) {
   var taskToEdit = _.find(taskList, { task: tTask });
 
   taskToEdit.status = 'Done';
-  console.log(taskList);
 
-  // var date = moment().format('MMM DD, YYYY');
-  // KELLEY FIX BUG TO NOT ADD A BLANK INPUT TO LIST
-  // KELLEY - FIX BUG TO ONLY ADD TIMESTAMP TO ITEMS DONE
-    // $('this .timestamp').html(date);
+  var date = moment().format('MMM DD, YYYY');
+  var time = moment().format('hh:mm');
+  $(this).find('.timestamp').html('completed on ' + date + ' at ' + time);
+
 });
 
 $('#tasks').on('click', '.complete', function (event) {
   event.preventDefault();
 
   $(this).removeClass('complete');
+  $(this).find('.timestamp').html('');
 
   var tTask = $(this).find('span').text();
   var taskToEdit = _.find(taskList, { task: tTask });
@@ -86,7 +86,7 @@ $('#clear').on('click', function (event) {
     $('#tasks').append(template.addtask(data));
   });
 
-}); // ends clear on click function
+});
 
 
 // });
