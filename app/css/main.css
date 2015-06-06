@@ -14,7 +14,7 @@ html {
 body {
   font-size: 62.5%;
   font-family: "Open Sans", sans-serif;
-  min-width: 361px;
+  min-width: 310px;
   max-width: 100%; }
 
 input, button {
@@ -26,7 +26,7 @@ input, button {
 ----------------- */
 .container {
   width: 70%;
-  min-width: 252px;
+  min-width: 217px;
   margin: auto;
   max-width: 68em;
   margin-left: auto;
@@ -169,9 +169,9 @@ ul {
   left: -1px;
   height: 80%; }
 
-@media screen and (min-width: 360px) and (max-width: 600px) {
+@media screen and (min-width: 310px) and (max-width: 600px) {
   body {
-    min-width: 360px; }
+    min-width: 310px; }
   h1 {
     font-size: 5em; }
   form input {

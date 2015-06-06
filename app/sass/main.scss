@@ -28,7 +28,7 @@ $darkblue: #323C42;
 body {
   font-size: 62.5%;
   font-family: $opensans;
-  min-width: 361px;
+  min-width: 310px;
   max-width: 100%;
 }
 
@@ -46,7 +46,7 @@ input, button {
 
 .container {
   width: 70%;
-  min-width: 252px;
+  min-width: 217px;
   margin: auto;
   @include outer-container;
   color: $darkblue;
