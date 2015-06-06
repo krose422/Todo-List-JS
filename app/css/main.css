@@ -13,8 +13,9 @@ html {
 
 body {
   font-size: 62.5%;
-  width: 100%;
-  font-family: "Open Sans", sans-serif; }
+  font-family: "Open Sans", sans-serif;
+  min-width: 361px;
+  max-width: 100%; }
 
 input, button {
   border: none; }
@@ -25,6 +26,7 @@ input, button {
 ----------------- */
 .container {
   width: 70%;
+  min-width: 252px;
   margin: auto;
   max-width: 68em;
   margin-left: auto;
@@ -166,3 +168,64 @@ ul {
   bottom: 13px;
   left: -1px;
   height: 80%; }
+
+@media screen and (min-width: 360px) and (max-width: 600px) {
+  body {
+    min-width: 360px; }
+  h1 {
+    font-size: 5em; }
+  form input {
+    font-size: 2em; }
+  form button {
+    font-size: 3em; }
+  ul li {
+    font-size: 2em; }
+    ul li .circle {
+      height: 25px;
+      width: 25px; }
+      ul li .circle::before {
+        bottom: 15px;
+        left: 0px;
+        height: 65%; }
+    ul li .timestamp {
+      width: 42%; }
+  .bottom .counter {
+    display: block;
+    width: 100%;
+    margin: 0px; }
+  .bottom .sorting {
+    display: block;
+    margin-left: 0;
+    width: 100%;
+    margin: auto; }
+    .bottom .sorting .sortBtn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      margin: 0;
+      margin-top: 10px; }
+  .bottom button {
+    display: block;
+    width: 100%;
+    margin-top: 10px; } }
+
+@media screen and (min-width: 600px) and (max-width: 810px) {
+  .bottom .counter {
+    display: block;
+    width: 100%;
+    margin: 0px; }
+  .bottom .sorting {
+    display: block;
+    margin-left: 0;
+    width: 100%;
+    margin: auto; }
+    .bottom .sorting .sortBtn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      margin: 0;
+      margin-top: 10px; }
+  .bottom button {
+    display: block;
+    width: 100%;
+    margin-top: 10px; } }

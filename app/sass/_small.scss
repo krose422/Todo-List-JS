@@ -1,0 +1,75 @@
+@media screen and  (min-width: 360px) and (max-width: 600px) {
+
+body {
+  min-width: 360px;
+}
+
+h1 {
+  font-size: 5em;
+}
+
+form {
+
+  input {
+    font-size: 2em;
+  }
+
+  button {
+    font-size: 3em;
+  }
+}
+
+ul {
+  li {
+    font-size: 2em;
+
+    .circle {
+      height: 25px;
+      width: 25px;
+
+      &::before {
+        bottom: 15px;
+        left: 0px;
+        height: 65%;
+      }
+
+    }
+
+    .timestamp {
+      width: 42%;
+    }
+
+  }
+}
+
+  .bottom {
+
+  .counter {
+    display: block;
+    width: 100%;
+    margin: 0px;
+  }
+
+  .sorting {
+    display: block;
+    margin-left: 0;
+    width: 100%;
+    margin: auto;
+
+    .sortBtn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      margin: 0;
+      margin-top: 10px;
+    }
+  }
+
+  button {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+}
+

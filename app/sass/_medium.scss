@@ -1,0 +1,35 @@
+@media screen and (min-width: 600px) and (max-width: 810px) {
+
+.bottom {
+
+  .counter {
+    display: block;
+    width: 100%;
+    margin: 0px;
+  }
+
+  .sorting {
+    display: block;
+    margin-left: 0;
+    width: 100%;
+    margin: auto;
+
+    .sortBtn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      margin: 0;
+      margin-top: 10px;
+    }
+  }
+
+  button {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+
+}
+
+
