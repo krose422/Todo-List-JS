@@ -40,6 +40,8 @@ h1 {
   font-size: 6em;
   text-align: center; }
 
+/* Form styles
+-------------- */
 form {
   overflow: hidden;
   text-align: center;
@@ -68,6 +70,8 @@ form {
     form button:hover {
       color: #9DBDC6; }
 
+/* Todo item styles
+-------------------- */
 ul {
   clear: both;
   list-style: none;
@@ -81,6 +85,8 @@ ul {
     margin-bottom: 10px;
     display: inline-block;
     float: left; }
+    ul li:hover {
+      border: 1px solid #9DBDC6; }
     ul li .circle {
       height: 30px;
       width: 30px;
@@ -101,6 +107,8 @@ ul {
       font-size: .5em;
       color: #9DBDC6; }
 
+/* Below list styles
+-------------------- */
 .bottom {
   width: 100%;
   margin: auto;
@@ -124,6 +132,8 @@ ul {
       .bottom .sorting .sortBtn:hover {
         cursor: pointer;
         border: 1px solid #9DBDC6; }
+    .bottom .sorting .sorted {
+      background-color: #DAEAEF; }
   .bottom button {
     float: right;
     background-color: #323C42;
@@ -137,6 +147,8 @@ ul {
       background-color: #D0553E;
       border: 1px solid #D0553E; }
 
+/* style for completed items - class added through JS
+----------------------------------------------------- */
 .complete .circle {
   border: 1px solid #DAEAEF;
   background-color: white; }

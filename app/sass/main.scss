@@ -58,6 +58,9 @@ h1 {
   text-align: center;
 }
 
+/* Form styles
+-------------- */
+
 form {
   overflow: hidden;
   text-align: center;
@@ -80,11 +83,12 @@ form {
     &:hover {
     color: $lightblue;
 
-  }
-
-
+    }
   }
 }
+
+/* Todo item styles
+-------------------- */
 
 ul {
   clear: both;
@@ -100,6 +104,10 @@ ul {
     margin-bottom: 10px;
     display: inline-block;
     float: left;
+
+    &:hover {
+      @include border($lightblue);
+    }
 
     .circle {
       height: 30px;
@@ -158,6 +166,9 @@ ul {
 
 // }
 
+/* Below list styles
+-------------------- */
+
 .bottom {
   width: 100%;
   margin: auto;
@@ -190,6 +201,10 @@ ul {
       @include border($lightblue);
     }
   }
+
+  .sorted {
+    background-color: $grey;
+  }
 }
 
   button {
@@ -208,6 +223,9 @@ ul {
     }
   }
 }
+
+/* style for completed items - class added through JS
+----------------------------------------------------- */
 
 .complete {
 
