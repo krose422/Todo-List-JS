@@ -173,4 +173,18 @@ function count () {
   });
 }
 
+
 }());
+
+
+// use below to remove items with delete button instead of re-appending a new array
+// need to set up adding the _.random id # though like Tim showed in class
+
+// taskList.forEach( function (t) {
+//   if (t.status !== 'Open') {
+//     taskList = _.without(taskList, t);
+//     $('#' + t.id).remove();
+//   }
+// });
+
+
