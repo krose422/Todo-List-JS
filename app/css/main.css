@@ -107,7 +107,8 @@ ul {
     ul li .timestamp {
       float: right;
       font-size: .5em;
-      color: #9DBDC6; }
+      color: #9DBDC6;
+      margin-right: 30px; }
 
 /* Below list styles
 -------------------- */
