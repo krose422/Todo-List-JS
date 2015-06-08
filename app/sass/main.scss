@@ -141,6 +141,18 @@ ul {
       margin-right: 30px;
     }
 
+    .delete {
+      float: right;
+      color: $grey;
+      font-size: 1em;
+      transition: .2s all ease;
+
+      &:hover {
+        color: $red;
+        opacity: .7;
+      }
+    }
+
   }
 }
 

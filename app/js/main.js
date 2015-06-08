@@ -79,6 +79,27 @@ $('#clear').on('click', function (event) {
   });
 });
 
+// DELETE INDIVIDUAL ITEM
+// ===============
+$('#tasks').on('click', '.delete', function(event) {
+  event.preventDefault();
+
+  var tTask = $(this).siblings('span').text();
+  var taskToUpdate = _.find(taskList, { task: tTask });
+  taskToUpdate.status = 'Remove';
+
+  taskList = _.reject(taskList, function (task) {
+    return task.status === 'Remove';
+  });
+
+// KELLEY FIX BUG TO ADD COMPLETE CLASS BACK ON TO 'DONE' ITEMS
+
+  $('#tasks').empty();
+  _.each(taskList, function (data) {
+    $('#tasks').append(template.addtask(data));
+  });
+
+});
 
 // SORT: INCOMPLETE ITEMS
 // ======================
