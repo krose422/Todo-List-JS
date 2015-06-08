@@ -3,18 +3,21 @@
 
 // TODO ITEM CONSTRUCTOR
 // ==========================
-
 var Todo = function (options) {
   var args = options || {};
   this.task = args.task;
   this.status = 'Open';
 };
 
+// ARRAYS
+//========
+var taskList = [];
+var incompleteList = [];
+var completeList = [];
+
+
 // CREATE INSTANCE FROM HTML INPUT
 // ===================================
-
-var taskList = [];
-
 $('#addTask').on('submit', function (event) {
   event.preventDefault();
   addTask();
@@ -31,19 +34,20 @@ function addTask () {
   }
 }
 
-
 // TOGGLE COMPLETE CHECKMARK ON CLICK, TOGGLE OBJECT STATUS ON CLICK
 // ==================================================================
-
-$('#tasks').on('click', 'li', function (event) {
+$('#tasks').on('click', '.circle', function (event) {
   event.preventDefault();
-  $(this).addClass('complete');
-  var tTask = $(this).find('span').text();
+  $(this).parent('li').addClass('complete');
+
+  var tTask = $(this).siblings('span').text();
   var taskToEdit = _.find(taskList, { task: tTask });
+
   taskToEdit.status = 'Done';
+
   var date = moment().format('MMM DD, YYYY');
   var time = moment().format('hh:mm');
-  $(this).find('.timestamp').html('completed on ' + date + ' at ' + time);
+  $(this).siblings('.timestamp').html('completed on ' + date + ' at ' + time);
   count();
 });
 
@@ -53,14 +57,13 @@ $('#tasks').on('click', '.complete', function (event) {
   $(this).find('.timestamp').html('');
   var tTask = $(this).find('span').text();
   var taskToEdit = _.find(taskList, { task: tTask });
+
   taskToEdit.status = 'Open';
   count();
 });
 
-
 // CLEAR COMPLETED BUTTON
 // =============================================
-
 $('#clear').on('click', function (event) {
   event.preventDefault();
 
@@ -76,11 +79,6 @@ $('#clear').on('click', function (event) {
   });
 });
 
-// SORT ITEMS WITH BUTTONS IN HTML
-// ================================
-
-var incompleteList = [];
-var completeList = [];
 
 // SORT: INCOMPLETE ITEMS
 // ======================
@@ -129,20 +127,21 @@ $('.sorting').on('click', '#all', function (event) {
 
   $('#tasks').empty();
   // add class back on to completed items in initial array for checkmark
-  // KELLEY TO FIX BUG - ADDING CLASS BACK ON TO COMPLETED TASKS
+// KELLEY TO FIX BUG - ADDING CLASS BACK ON TO COMPLETED TASKS
   _.each(taskList, function (data) {
 
     if (data.status === 'Done') {
+
       $('li').addClass('complete');
     }
   $('#tasks').append(template.addtask(data));
   });
 });
 
+
+
 // COUNTER
 // ====================
-
-// count number of open items into variable
 function count () {
   var taskCount = 0;
   _.each(taskList, function (taskitem) {
@@ -152,6 +151,5 @@ function count () {
     $('.count').html(taskCount);
   });
 }
-
 
 }());

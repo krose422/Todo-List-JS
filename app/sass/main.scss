@@ -109,6 +109,7 @@ ul {
 
     &:hover {
       @include border($lightblue);
+
     }
 
     .circle {
@@ -137,36 +138,12 @@ ul {
       float: right;
       font-size: .5em;
       color: $lightblue;
+      margin-right: 30px;
     }
 
   }
 }
 
-// .delete {
-//   display: inline-block;
-//   height: 30px;
-//   width: 30px;
-//   top: 0;
-//   left: 0;
-//   float: right;
-
-//   &::before {
-//     font-family: FontAwesome;
-//     content: "\f00d";
-//     color: $red;
-//     opacity: .2;
-//     font-size: 1em;
-//     left: 0;
-//     top: 0;
-//     height: 30px;
-
-//     &:hover {
-//       opacity: 1;
-//     }
-
-//   }
-
-// }
 
 /* Below list styles
 -------------------- */
