@@ -190,7 +190,11 @@ ul {
         left: 0px;
         height: 65%; }
     ul li .timestamp {
-      width: 42%; }
+      width: 42%;
+      margin-top: 5px;
+      font-size: .3em;
+      float: left;
+      width: 100%; }
   .bottom .counter {
     display: block;
     width: 100%;
