@@ -1,6 +1,7 @@
 (function() {
 'use strict';
 
+
 // TODO ITEM CONSTRUCTOR
 // ==========================
 var Todo = function (options) {
@@ -8,6 +9,18 @@ var Todo = function (options) {
   this.task = args.task;
   this.status = 'Open';
 };
+
+var toggle = function (a) {
+  if (a.status === 'Open') {
+    a.status = 'Done';
+  } else if (a.status === 'Done') {
+    a.status = 'Open';
+  }
+
+};
+
+Todo.prototype.toggle = toggle;
+
 
 // ARRAYS
 //========
@@ -42,8 +55,8 @@ $('#tasks').on('click', '.circle', function (event) {
 
   var tTask = $(this).siblings('span').text();
   var taskToEdit = _.find(taskList, { task: tTask });
-
-  taskToEdit.status = 'Done';
+  taskToEdit.toggle(taskToEdit);
+  console.log(taskList);
 
   var date = moment().format('MMM DD, YYYY');
   var time = moment().format('hh:mm');
@@ -59,6 +72,8 @@ $('#tasks').on('click', '.complete', function (event) {
   var taskToEdit = _.find(taskList, { task: tTask });
 
   taskToEdit.status = 'Open';
+
+  console.log(taskList);
   count();
 });
 
